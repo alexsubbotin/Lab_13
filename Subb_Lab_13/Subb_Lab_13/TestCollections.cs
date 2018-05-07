@@ -68,7 +68,7 @@ namespace Subb_Lab_13
                 monarchy.CurrentRullingClanName += (char)rnd.Next(65, 91);
             }
 
-            monarchy.Continent = continents[rnd.Next(0, 6)];
+            monarchy.Continent = continents[rnd.Next(0, 5)];
 
             return monarchy;
         }
