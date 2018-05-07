@@ -78,5 +78,14 @@ namespace Subb_Lab_13
             DictionaryState.Add(monarchy.BaseState, monarchy);
             DictionaryString.Add(monarchy.BaseState.ToString(), monarchy);
         }
+
+        // Method to remove an element.
+        public void Remove(Monarchy monarchy)
+        {
+            ListState.Remove(monarchy.BaseState);
+            ListString.Remove(monarchy.BaseState.ToString());
+            DictionaryState.Remove(monarchy.BaseState);
+            DictionaryString.Remove(monarchy.BaseState.ToString());
+        }
     }
 }
