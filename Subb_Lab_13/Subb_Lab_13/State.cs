@@ -55,8 +55,10 @@ namespace Subb_Lab_13
                 if (value > -1)
                     population = value;
                 else
-                    //Console.WriteLine("The population of a state can't be negative!");
+                {
                     population = 0;
+                    throw new NegativeValueException("Population can not be negative!");
+                }
             }
         }
         // age property
@@ -71,8 +73,10 @@ namespace Subb_Lab_13
                 if (value > -1)
                     age = value;
                 else
-                    //Console.WriteLine("The age of a state can't be negative!");
+                {
                     age = 0;
+                    throw new NegativeValueException("Age can not be negative!");
+                }
             }
         }
         // continent property
