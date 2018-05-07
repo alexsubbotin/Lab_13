@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Subb_Lab11
+namespace Subb_Lab_13
 {
     class State // State class
     {
@@ -112,6 +112,12 @@ namespace Subb_Lab11
         {
             Console.WriteLine(" State's name: {0}\n Leader's name: {1}\n State's population: {2}\n State's age: {3}\n Continent: {4}\n",
                 Name, LeaderName, Population, Age, Continent);
+        }
+
+        public override string ToString()
+        {
+            return " State's name: " + Name + " Leader's name: " + LeaderName + 
+                " State's population: " + Population + " State's age: " + Age + " Continent: " + Continent;
         }
     }
 }
