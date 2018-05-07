@@ -11,12 +11,6 @@ namespace Subb_Lab_13
     {
         static void Main(string[] args)
         {
-            //TestCollections testCollections = new TestCollections(10);
-
-            //GetTime(testCollections);
-
-
-
             // Getting the number of elements.
             int count = GetCount();
 
