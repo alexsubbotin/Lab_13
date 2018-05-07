@@ -11,11 +11,31 @@ namespace Subb_Lab_13
     {
         static void Main(string[] args)
         {
-            TestCollections testCollections = new TestCollections(10);
+            //TestCollections testCollections = new TestCollections(10);
 
-            GetTime(testCollections);
+            //GetTime(testCollections);
+
+            Console.Clear();
+
+            
 
             Console.ReadLine();
+        }
+
+        // Getting the collections count.
+        public static int GetCount()
+        {
+            bool ok;
+            int n;
+            do
+            {
+                Console.Write("Enter the number of elements: ");
+                ok = Int32.TryParse(Console.ReadLine(), out n);
+                if (!ok || n < 0)
+                    Console.WriteLine("Input error! You probably didn't enter a natural number");
+            } while (!ok || n < 0);
+
+            return n;
         }
 
         public static void GetTime(TestCollections testCollections)
