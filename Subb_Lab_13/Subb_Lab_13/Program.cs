@@ -36,6 +36,8 @@ namespace Subb_Lab_13
             // The state object that doesn't exist in the collections.
             State alienState = new State("The Czech Republic", "Milos Zeman", 10610947, 25, "Europe");
 
+
+
             // The first monarchy object.
             Monarchy firstMon = new Monarchy(monArr[0].Name, monArr[0].LeaderName, monArr[0].Population, monArr[0].Age, 
                 monArr[0].Continent, monArr[0].CurrentRullingClanName);
@@ -50,6 +52,43 @@ namespace Subb_Lab_13
 
             // The monarchy object that doesn't exist in the collections.
             Monarchy alienMonarchy = new Monarchy("Jamaica", "Elizabeth II", 43847430, 56, "America", "House of Windsor");
+        }
+
+        public static long[] StateGetMillis(TestCollections testCollections, State searchThis)
+        {
+            // Store time.
+            long millisListState, millisListString, millisDicState, millisDicString;
+
+            // A StopWatch object to count nilliseconds.
+            Stopwatch sw = new Stopwatch();
+
+            // Counting the search time in List<TKey>.
+            sw.Start();
+            testCollections.ListState.Contains(searchThis);
+            sw.Stop();
+            millisListState = sw.ElapsedMilliseconds;
+
+            // Counting the search time in List<string>.
+            sw.Restart();
+            testCollections.ListString.Contains(searchThis.ToString());
+            sw.Stop();
+            millisListString = sw.ElapsedMilliseconds;
+
+            // Counting the search time in Dinctionary<TKey, TValue>.
+            sw.Restart();
+            testCollections.DictionaryState.ContainsKey(searchThis);
+            sw.Stop();
+            millisDicState = sw.ElapsedMilliseconds;
+
+            // Counting the search time in Dinctionary<string, TValue>.
+            sw.Restart();
+            testCollections.DictionaryString.ContainsKey(searchThis.ToString());
+            sw.Stop();
+            millisDicString = sw.ElapsedMilliseconds;
+
+            long[] millis = { millisListState, millisListString, millisDicState, millisDicString };
+
+            return millis;
         }
     }
 }
