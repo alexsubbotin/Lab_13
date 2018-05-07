@@ -69,5 +69,14 @@ namespace Subb_Lab_13
 
             return monarchy;
         }
+
+        // Method to add an element to the collections.
+        public void Add(Monarchy monarchy)
+        {
+            ListState.Add(monarchy.BaseState);
+            ListString.Add(monarchy.BaseState.ToString());
+            DictionaryState.Add(monarchy.BaseState, monarchy);
+            DictionaryString.Add(monarchy.BaseState.ToString(), monarchy);
+        }
     }
 }
