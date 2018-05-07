@@ -59,24 +59,24 @@ namespace Subb_Lab_13
 
 
             // Stores all the search times of the 1st object.
-            long[] stateSearch = StateGetMillis(testCollections, firstState);
+            long[] stateSearch = StateGetTicks(testCollections, firstState);
             long[] firstSearch = { stateSearch[0], stateSearch[1],
-                stateSearch[2], stateSearch[3],  MonarchyGetMillis(testCollections, firstMon) };
+                stateSearch[2], stateSearch[3],  MonarchyGetTicks(testCollections, firstMon) };
 
             // Stores all the search times of the middle object.
-            stateSearch = StateGetMillis(testCollections, middleState);
+            stateSearch = StateGetTicks(testCollections, middleState);
             long[] middleSearch = { stateSearch[0], stateSearch[1],
-                stateSearch[2], stateSearch[3], MonarchyGetMillis(testCollections, middleMon) };
+                stateSearch[2], stateSearch[3], MonarchyGetTicks(testCollections, middleMon) };
 
             // Stores all the search times of the last object.
-            stateSearch = StateGetMillis(testCollections, lastState);
+            stateSearch = StateGetTicks(testCollections, lastState);
             long[] lastSearch = { stateSearch[0], stateSearch[1],
-                stateSearch[2], stateSearch[3], MonarchyGetMillis(testCollections, lastMon) };
+                stateSearch[2], stateSearch[3], MonarchyGetTicks(testCollections, lastMon) };
 
             // Stores all the search times of the alien object.
-            stateSearch = StateGetMillis(testCollections, alienState);
+            stateSearch = StateGetTicks(testCollections, alienState);
             long[] alienSearch = { stateSearch[0], stateSearch[1],
-                stateSearch[2], stateSearch[3], MonarchyGetMillis(testCollections, alienMon) };
+                stateSearch[2], stateSearch[3], MonarchyGetTicks(testCollections, alienMon) };
 
 
             // Showing the objects.
@@ -107,7 +107,7 @@ namespace Subb_Lab_13
         }
 
         // Method to search a state object.
-        public static long[] StateGetMillis(TestCollections testCollections, State searchThis)
+        public static long[] StateGetTicks(TestCollections testCollections, State searchThis)
         {
             // Store time.
             long millisListState, millisListString, millisDicState, millisDicString;
@@ -119,25 +119,25 @@ namespace Subb_Lab_13
             sw.Start();
             testCollections.ListState.Contains(searchThis);
             sw.Stop();
-            millisListState = sw.ElapsedMilliseconds;
+            millisListState = sw.ElapsedTicks;
 
             // Counting the search time in List<string>.
             sw.Restart();
             testCollections.ListString.Contains(searchThis.ToString());
             sw.Stop();
-            millisListString = sw.ElapsedMilliseconds;
+            millisListString = sw.ElapsedTicks;
 
             // Counting the search time in Dinctionary<TKey, TValue>.
             sw.Restart();
             testCollections.DictionaryState.ContainsKey(searchThis);
             sw.Stop();
-            millisDicState = sw.ElapsedMilliseconds;
+            millisDicState = sw.ElapsedTicks;
 
             // Counting the search time in Dinctionary<string, TValue>.
             sw.Restart();
             testCollections.DictionaryString.ContainsKey(searchThis.ToString());
             sw.Stop();
-            millisDicString = sw.ElapsedMilliseconds;
+            millisDicString = sw.ElapsedTicks;
 
             long[] millis = { millisListState, millisListString, millisDicState, millisDicString };
 
@@ -145,7 +145,7 @@ namespace Subb_Lab_13
         }
 
         // Method to search a monarchy object in Dictionary<TKey, TValue>.
-        public static long MonarchyGetMillis(TestCollections testCollections, Monarchy searchThis)
+        public static long MonarchyGetTicks(TestCollections testCollections, Monarchy searchThis)
         {
             // A StopWatch object to count milliseconds.
             Stopwatch sw = new Stopwatch();
@@ -155,7 +155,7 @@ namespace Subb_Lab_13
             testCollections.DictionaryState.ContainsValue(searchThis);
             sw.Stop();
 
-            return sw.ElapsedMilliseconds;
+            return sw.ElapsedTicks;
         }
     }
 }
