@@ -12,6 +12,10 @@ namespace Subb_Lab_13
         static void Main(string[] args)
         {
             TestCollections testCollections = new TestCollections(10);
+
+            GetTime(testCollections);
+
+            Console.ReadLine();
         }
 
         public static void GetTime(TestCollections testCollections)
@@ -41,7 +45,6 @@ namespace Subb_Lab_13
             State alienState = alienMon.BaseState;
 
 
-
             // The first monarchy object.
             Monarchy firstMon = new Monarchy(monArr[0].Name, monArr[0].LeaderName, monArr[0].Population, monArr[0].Age, 
                 monArr[0].Continent, monArr[0].CurrentRullingClanName);
@@ -55,22 +58,52 @@ namespace Subb_Lab_13
                 monArr[monArr.Length - 1].Age, monArr[monArr.Length - 1].Continent, monArr[monArr.Length - 1].CurrentRullingClanName);
 
 
-
             // Stores all the search times of the 1st object.
-            long[] firstSearch = { StateGetMillis(testCollections, firstState)[0], StateGetMillis(testCollections, firstState)[1],
-                StateGetMillis(testCollections, firstState)[2], StateGetMillis(testCollections, firstState)[3], MonarchyGetMillis(testCollections, firstMon) };
+            long[] stateSearch = StateGetMillis(testCollections, firstState);
+            long[] firstSearch = { stateSearch[0], stateSearch[1],
+                stateSearch[2], stateSearch[3],  MonarchyGetMillis(testCollections, firstMon) };
 
             // Stores all the search times of the middle object.
-            long[] middleSearch = { StateGetMillis(testCollections, middleState)[0], StateGetMillis(testCollections, middleState)[1],
-                StateGetMillis(testCollections, middleState)[2], StateGetMillis(testCollections, middleState)[3], MonarchyGetMillis(testCollections, middleMon) };
+            stateSearch = StateGetMillis(testCollections, middleState);
+            long[] middleSearch = { stateSearch[0], stateSearch[1],
+                stateSearch[2], stateSearch[3], MonarchyGetMillis(testCollections, middleMon) };
 
             // Stores all the search times of the last object.
-            long[] lastSearch = { StateGetMillis(testCollections, lastState)[0], StateGetMillis(testCollections, lastState)[1],
-                StateGetMillis(testCollections, lastState)[2], StateGetMillis(testCollections, lastState)[3], MonarchyGetMillis(testCollections, lastMon) };
+            stateSearch = StateGetMillis(testCollections, lastState);
+            long[] lastSearch = { stateSearch[0], stateSearch[1],
+                stateSearch[2], stateSearch[3], MonarchyGetMillis(testCollections, lastMon) };
 
             // Stores all the search times of the alien object.
-            long[] alienSearch = { StateGetMillis(testCollections, alienState)[0], StateGetMillis(testCollections, alienState)[1],
-                StateGetMillis(testCollections, alienState)[2], StateGetMillis(testCollections, alienState)[3], MonarchyGetMillis(testCollections, alienMon) };
+            stateSearch = StateGetMillis(testCollections, alienState);
+            long[] alienSearch = { stateSearch[0], stateSearch[1],
+                stateSearch[2], stateSearch[3], MonarchyGetMillis(testCollections, alienMon) };
+
+
+            // Showing the objects.
+            Console.WriteLine("The first object: ");
+            firstState.Show();
+            Console.WriteLine("The middle object: ");
+            middleState.Show();
+            Console.WriteLine("The last object: ");
+            lastState.Show();
+            Console.WriteLine("The alien object: ");
+            alienState.Show();
+
+            Console.WriteLine("Time to search for the first element:\n In List<TKey>: {0}\n In List<string>: {1}\n " +
+                "In Dictionary<TKey, TValue> (key): {2}\n In Dictionary<string, TValue> (key): {3}\n In In Dictionary<TKey, TValue> (value) : {4}\n",
+                firstSearch[0], firstSearch[1], firstSearch[2], firstSearch[3], firstSearch[4]);
+
+            Console.WriteLine("Time to search for the middle element:\n In List<TKey>: {0}\n In List<string>: {1}\n " +
+                "In Dictionary<TKey, TValue> (key): {2}\n In Dictionary<string, TValue> (key): {3}\n In In Dictionary<TKey, TValue> (value) : {4}\n",
+                middleSearch[0], middleSearch[1], middleSearch[2], middleSearch[3], middleSearch[4]);
+
+            Console.WriteLine("Time to search for the last element:\n In List<TKey>: {0}\n In List<string>: {1}\n " +
+                "In Dictionary<TKey, TValue> (key): {2}\n In Dictionary<string, TValue> (key): {3}\n In In Dictionary<TKey, TValue> (value) : {4}\n",
+                lastSearch[0], lastSearch[1], lastSearch[2], lastSearch[3], lastSearch[4]);
+
+            Console.WriteLine("Time to search for the alien element:\n In List<TKey>: {0}\n In List<string>: {1}\n " +
+                "In Dictionary<TKey, TValue> (key): {2}\n In Dictionary<string, TValue> (key): {3}\n In In Dictionary<TKey, TValue> (value) : {4}\n",
+                alienSearch[0], alienSearch[1], alienSearch[2], alienSearch[3], alienSearch[4]);
         }
 
         // Method to search a state object.
