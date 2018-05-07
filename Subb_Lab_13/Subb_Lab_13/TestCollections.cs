@@ -56,6 +56,8 @@ namespace Subb_Lab_13
         {
             Monarchy monarchy = new Monarchy();
 
+            string[] continents = { "Asia", "Africa", "America", "Oceania", "Europe" };
+
             // Creating the element.
             for (int i = 0; i < rnd.Next(4, 20); i++)
             {
@@ -63,9 +65,10 @@ namespace Subb_Lab_13
                 monarchy.LeaderName += (char)rnd.Next(97, 123);
                 monarchy.Age += rnd.Next(0, 150);
                 monarchy.Population += rnd.Next(0, 1000);
-                monarchy.Continent += (char)rnd.Next(97, 123);
                 monarchy.CurrentRullingClanName += (char)rnd.Next(65, 91);
             }
+
+            monarchy.Continent = continents[rnd.Next(0, 6)];
 
             return monarchy;
         }

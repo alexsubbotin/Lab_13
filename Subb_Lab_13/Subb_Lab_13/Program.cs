@@ -15,7 +15,7 @@ namespace Subb_Lab_13
 
             //GetTime(testCollections);
 
-            Console.Clear();
+
 
             // Getting the number of elements.
             int count = GetCount();
@@ -27,6 +27,8 @@ namespace Subb_Lab_13
             int choice;
             do
             {
+                Console.Clear();
+
                 Console.WriteLine(@"Choose one of the options:
 1. Print the elements.
 2. Add an element.
@@ -40,22 +42,36 @@ namespace Subb_Lab_13
                     case 1:
                         ShowColl(testCollections);
                         break;
+                    case 2:
+                        AddElem(ref testCollections);
+                        break;
+                    
                 }
             } while (choice != 5);
 
             Console.ReadLine();
         }
 
-        public static TestCollections AddElem(TestCollections testCollections)
+        // Method to add an element.
+        public static void AddElem(ref TestCollections testCollections)
         {
             Console.Clear();
 
             Console.WriteLine("Enter the adding object:");
             Monarchy monarchy = ObjectInput();
 
-            testCollections.Add(monarchy);
+            try
+            {
+                testCollections.Add(monarchy);
 
-            Console.WriteLine("The element is successfully added!\nPress ENTER to go back");
+                Console.WriteLine("The element is successfully added!");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine("Press ENTER to go back");
             Console.ReadLine();
         }
 
