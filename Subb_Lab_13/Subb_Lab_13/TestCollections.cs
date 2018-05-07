@@ -9,16 +9,16 @@ namespace Subb_Lab_13
     class TestCollections
     {
         // List<TKey>.
-        List<State> ListState { get; set; }
+        public List<State> ListState { get; set; }
 
         // List<string>.
-        List<string> ListString { get; set; }
+        public List<string> ListString { get; set; }
 
         // Dictionary<TKey, TValue>.
-        Dictionary<State, Monarchy> DictionaryState { get; set; }
+        public Dictionary<State, Monarchy> DictionaryState { get; set; }
 
         // Dictionary<string, TValue>.
-        Dictionary<string, Monarchy> DictionaryString { get; set; }
+        public Dictionary<string, Monarchy> DictionaryString { get; set; }
 
         // Constructor with a parameter.
         public TestCollections(int capacity)
