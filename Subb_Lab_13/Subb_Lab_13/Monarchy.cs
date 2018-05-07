@@ -45,5 +45,14 @@ namespace Subb_Lab_13
                 "Current rulling clan: {5}\n", 
                 Name, LeaderName, Population, Age, Continent, CurrentRullingClanName);
         }
+
+        // Property that returns an object of the base class.
+        public State BaseState
+        {
+            get
+            {
+                return new State(this.Name, this.LeaderName, this.Population, this.Age, this.Continent);
+            }
+        }
     }
 }
