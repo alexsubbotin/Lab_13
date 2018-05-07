@@ -22,6 +22,10 @@ namespace Subb_Lab_13
             // Array of monarchy objects that are stored in collections.
             Monarchy[] monArr = testCollections.DictionaryState.Values.ToArray();
 
+            // The monarchy object that doesn't exist in the collections.
+            Monarchy alienMon = new Monarchy("Jamaica", "Elizabeth II", 43847430, 56, "America", "House of Windsor");
+
+
             // The first state object.
             State firstState = new State(stateArr[0].Name, stateArr[0].LeaderName, stateArr[0].Population, stateArr[0].Age, stateArr[0].Continent);
 
@@ -34,7 +38,7 @@ namespace Subb_Lab_13
                 stateArr[stateArr.Length - 1].Population, stateArr[stateArr.Length - 1].Age, stateArr[stateArr.Length - 1].Continent);
 
             // The state object that doesn't exist in the collections.
-            State alienState = new State("The Czech Republic", "Milos Zeman", 10610947, 25, "Europe");
+            State alienState = alienMon.BaseState;
 
 
 
@@ -50,8 +54,23 @@ namespace Subb_Lab_13
             Monarchy lastMon = new Monarchy(monArr[monArr.Length - 1].Name, monArr[monArr.Length - 1].LeaderName, monArr[monArr.Length - 1].Population,
                 monArr[monArr.Length - 1].Age, monArr[monArr.Length - 1].Continent, monArr[monArr.Length - 1].CurrentRullingClanName);
 
-            // The monarchy object that doesn't exist in the collections.
-            Monarchy alienMonarchy = new Monarchy("Jamaica", "Elizabeth II", 43847430, 56, "America", "House of Windsor");
+
+
+            // Stores all the search times of the 1st object.
+            long[] firstSearch = { StateGetMillis(testCollections, firstState)[0], StateGetMillis(testCollections, firstState)[1],
+                StateGetMillis(testCollections, firstState)[2], StateGetMillis(testCollections, firstState)[3], MonarchyGetMillis(testCollections, firstMon) };
+
+            // Stores all the search times of the middle object.
+            long[] middleSearch = { StateGetMillis(testCollections, middleState)[0], StateGetMillis(testCollections, middleState)[1],
+                StateGetMillis(testCollections, middleState)[2], StateGetMillis(testCollections, middleState)[3], MonarchyGetMillis(testCollections, middleMon) };
+
+            // Stores all the search times of the last object.
+            long[] lastSearch = { StateGetMillis(testCollections, lastState)[0], StateGetMillis(testCollections, lastState)[1],
+                StateGetMillis(testCollections, lastState)[2], StateGetMillis(testCollections, lastState)[3], MonarchyGetMillis(testCollections, lastMon) };
+
+            // Stores all the search times of the alien object.
+            long[] alienSearch = { StateGetMillis(testCollections, alienState)[0], StateGetMillis(testCollections, alienState)[1],
+                StateGetMillis(testCollections, alienState)[2], StateGetMillis(testCollections, alienState)[3], MonarchyGetMillis(testCollections, alienMon) };
         }
 
         // Method to search a state object.
