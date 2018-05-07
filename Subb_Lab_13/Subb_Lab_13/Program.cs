@@ -17,8 +17,122 @@ namespace Subb_Lab_13
 
             Console.Clear();
 
-            
+            // Getting the number of elements.
+            int count = GetCount();
 
+            // Creating a TestCollections object.
+            TestCollections testCollections = new TestCollections(count);
+            Console.WriteLine("Collections are successfully created!");
+
+            int choice;
+            do
+            {
+                Console.WriteLine(@"Choose one of the options:
+1. Print the elements.
+2. Add an element.
+3. Remove an element.
+4. Count the search time.
+5. Exit.");
+                choice = ChoiceInput(5);
+
+                switch (choice)
+                {
+                    case 1:
+                        ShowColl(testCollections);
+                        break;
+                }
+            } while (choice != 5);
+
+            Console.ReadLine();
+        }
+
+        public static TestCollections AddElem(TestCollections testCollections)
+        {
+            Console.Clear();
+
+            Console.WriteLine("Enter the adding object:");
+            Monarchy monarchy = ObjectInput();
+
+            testCollections.Add(monarchy);
+
+            Console.WriteLine("The element is successfully added!\nPress ENTER to go back");
+            Console.ReadLine();
+        }
+
+        // Function to input a monarchy object.
+        public static Monarchy ObjectInput()
+        {
+            Monarchy monarchy = new Monarchy();
+
+            // Name input.
+            Console.Write("Enter the name: ");
+            monarchy.Name = Console.ReadLine();
+
+            // Leader name input.
+            Console.Write("Enter the leader's name: ");
+            monarchy.LeaderName = Console.ReadLine();
+
+            // Population input.
+            bool ok;
+            int buf;
+            do
+            {
+                Console.Write("Enter the population: ");
+                ok = Int32.TryParse(Console.ReadLine(), out buf);
+                if (!ok || buf < 0)
+                    Console.WriteLine("Input error! Perhaps you didn't enter a natural number");
+            } while (!ok || buf < 0);
+
+            monarchy.Population = buf;
+
+            // Age input.
+            do
+            {
+                Console.Write("Enter the age: ");
+                ok = Int32.TryParse(Console.ReadLine(), out buf);
+                if (!ok || buf < 0)
+                    Console.WriteLine("Input error! Perhaps you didn't enter a natural number");
+            } while (!ok || buf < 0);
+
+            monarchy.Age = buf;
+
+            // Continent input.
+            monarchy.Continent = ContinentsInput();
+
+            Console.Write("Enter the current rulling clan's name: ");
+            monarchy.CurrentRullingClanName = Console.ReadLine();
+
+            return monarchy;
+        }
+
+        // Continents input.
+        public static string ContinentsInput()
+        {
+            string[] continents = { "Asia", "Africa", "America", "Oceania", "Europe" };
+
+            Console.WriteLine();
+            Console.WriteLine(@"Choose one of the continents:
+1. Asia
+2. Africa
+3. America
+4. Oceania
+5. Europe");
+
+            int choice = Program.ChoiceInput(5);
+
+            Console.WriteLine();
+
+            return continents[choice - 1];
+        }
+
+        // Printing the elements.
+        public static void ShowColl(TestCollections testCollections)
+        {
+            Console.Clear();
+            Console.WriteLine("The elements:");
+            foreach (State s in testCollections.ListState)
+                s.Show();
+            Console.WriteLine("Press ENTER to go back.");
             Console.ReadLine();
         }
 
@@ -176,6 +290,22 @@ namespace Subb_Lab_13
             sw.Stop();
 
             return sw.ElapsedTicks;
+        }
+
+        // Choice input.
+        public static int ChoiceInput(int size)
+        {
+            bool ok;
+            int choice;
+            do
+            {
+                Console.Write("Enter the number of the chosen option: ");
+                ok = Int32.TryParse(Console.ReadLine(), out choice);
+                if (!ok || choice < 1 || choice > size)
+                    Console.WriteLine("Input error! Perhaps you didn't enter a number from 1 to {0}", size);
+            } while (!ok || choice < 1 || choice > size);
+
+            return choice;
         }
     }
 }
