@@ -19,5 +19,14 @@ namespace Subb_Lab_13
 
         // Dictionary<string, TValue>.
         Dictionary<string, Monarchy> DictionaryString { get; set; }
+
+        // Constructor with parameters that define capacities.
+        public TestCollections(int a, int b, int c, int d)
+        {
+            ListState = new List<State>(a);
+            ListString = new List<string>(b);
+            DictionaryState = new Dictionary<State, Monarchy>(c);
+            DictionaryString = new Dictionary<string, Monarchy>(d);
+        }
     }
 }
