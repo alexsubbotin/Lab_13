@@ -45,6 +45,15 @@ namespace Subb_Lab_13
                     case 2:
                         AddElem(ref testCollections);
                         break;
+                    case 3:
+                        RemoveElem(ref testCollections);
+                        break;
+                    case 4:
+                        GetTime(testCollections);
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
                     
                 }
             } while (choice != 5);
@@ -67,6 +76,29 @@ namespace Subb_Lab_13
                 Console.WriteLine("The element is successfully added!");
             }
             catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine("Press ENTER to go back");
+            Console.ReadLine();
+        }
+
+        // Method to remove an element.
+        public static void RemoveElem(ref TestCollections testCollections)
+        {
+            Console.Clear();
+
+            Console.WriteLine("Enter the removing object:");
+            Monarchy monarchy = ObjectInput();
+
+            try
+            {
+                testCollections.Remove(monarchy);
+
+                Console.WriteLine("The element is successfully removed!");
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -228,8 +260,8 @@ namespace Subb_Lab_13
             long[] alienSearch = { stateSearch[0], stateSearch[1],
                 stateSearch[2], stateSearch[3], MonarchyGetTicks(testCollections, alienMon) };
 
-
             // Showing the objects.
+            Console.Clear();
             Console.WriteLine("The first object: ");
             firstState.Show();
             Console.WriteLine("The middle object: ");
@@ -254,6 +286,9 @@ namespace Subb_Lab_13
             Console.WriteLine("Time to search for the alien element:\n In List<TKey>: {0}\n In List<string>: {1}\n " +
                 "In Dictionary<TKey, TValue> (key): {2}\n In Dictionary<string, TValue> (key): {3}\n In In Dictionary<TKey, TValue> (value) : {4}\n",
                 alienSearch[0], alienSearch[1], alienSearch[2], alienSearch[3], alienSearch[4]);
+
+            Console.WriteLine("Press ENTER to go back");
+            Console.ReadLine();
         }
 
         // Method to search a state object.
