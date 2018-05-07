@@ -76,19 +76,33 @@ namespace Subb_Lab_13
         // Method to add an element to the collections.
         public void Add(Monarchy monarchy)
         {
-            ListState.Add(monarchy.BaseState);
-            ListString.Add(monarchy.BaseState.ToString());
-            DictionaryState.Add(monarchy.BaseState, monarchy);
-            DictionaryString.Add(monarchy.BaseState.ToString(), monarchy);
+            try
+            {
+                ListState.Add(monarchy.BaseState);
+                ListString.Add(monarchy.BaseState.ToString());
+                DictionaryState.Add(monarchy.BaseState, monarchy);
+                DictionaryString.Add(monarchy.BaseState.ToString(), monarchy);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         // Method to remove an element.
         public void Remove(Monarchy monarchy)
         {
-            ListState.Remove(monarchy.BaseState);
-            ListString.Remove(monarchy.BaseState.ToString());
-            DictionaryState.Remove(monarchy.BaseState);
-            DictionaryString.Remove(monarchy.BaseState.ToString());
+            try
+            {
+                ListState.Remove(monarchy.BaseState);
+                ListString.Remove(monarchy.BaseState.ToString());
+                DictionaryState.Remove(monarchy.BaseState);
+                DictionaryString.Remove(monarchy.BaseState.ToString());
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

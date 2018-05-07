@@ -54,7 +54,7 @@ namespace Subb_Lab_13
                     case 5:
                         Environment.Exit(0);
                         break;
-                    
+
                 }
             } while (choice != 5);
 
@@ -69,16 +69,10 @@ namespace Subb_Lab_13
             Console.WriteLine("Enter the adding object:");
             Monarchy monarchy = ObjectInput();
 
-            try
-            {
-                testCollections.Add(monarchy);
+            testCollections.Add(monarchy);
 
-                Console.WriteLine("The element is successfully added!");
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            Console.WriteLine("The element is successfully added!");
+
 
             Console.WriteLine("Press ENTER to go back");
             Console.ReadLine();
@@ -92,16 +86,11 @@ namespace Subb_Lab_13
             Console.WriteLine("Enter the removing object:");
             Monarchy monarchy = ObjectInput();
 
-            try
-            {
-                testCollections.Remove(monarchy);
 
-                Console.WriteLine("The element is successfully removed!");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            testCollections.Remove(monarchy);
+
+            Console.WriteLine("The element is successfully removed!");
+
 
             Console.WriteLine("Press ENTER to go back");
             Console.ReadLine();
@@ -228,11 +217,11 @@ namespace Subb_Lab_13
 
 
             // The first monarchy object.
-            Monarchy firstMon = new Monarchy(monArr[0].Name, monArr[0].LeaderName, monArr[0].Population, monArr[0].Age, 
+            Monarchy firstMon = new Monarchy(monArr[0].Name, monArr[0].LeaderName, monArr[0].Population, monArr[0].Age,
                 monArr[0].Continent, monArr[0].CurrentRullingClanName);
 
             // The middle monarchy object.
-            Monarchy middleMon = new Monarchy(monArr[monArr.Length / 2].Name, monArr[monArr.Length / 2].LeaderName, monArr[monArr.Length / 2].Population, 
+            Monarchy middleMon = new Monarchy(monArr[monArr.Length / 2].Name, monArr[monArr.Length / 2].LeaderName, monArr[monArr.Length / 2].Population,
                 monArr[monArr.Length / 2].Age, monArr[monArr.Length / 2].Continent, monArr[monArr.Length / 2].CurrentRullingClanName);
 
             // The last monarchy object.
