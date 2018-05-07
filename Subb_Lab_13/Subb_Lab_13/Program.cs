@@ -54,12 +54,13 @@ namespace Subb_Lab_13
             Monarchy alienMonarchy = new Monarchy("Jamaica", "Elizabeth II", 43847430, 56, "America", "House of Windsor");
         }
 
+        // Method to search a state object.
         public static long[] StateGetMillis(TestCollections testCollections, State searchThis)
         {
             // Store time.
             long millisListState, millisListString, millisDicState, millisDicString;
 
-            // A StopWatch object to count nilliseconds.
+            // A StopWatch object to count milliseconds.
             Stopwatch sw = new Stopwatch();
 
             // Counting the search time in List<TKey>.
@@ -89,6 +90,20 @@ namespace Subb_Lab_13
             long[] millis = { millisListState, millisListString, millisDicState, millisDicString };
 
             return millis;
+        }
+
+        // Method to search a monarchy object in Dictionary<TKey, TValue>.
+        public static long MonarchyGetMillis(TestCollections testCollections, Monarchy searchThis)
+        {
+            // A StopWatch object to count milliseconds.
+            Stopwatch sw = new Stopwatch();
+
+            // Counting the search time.
+            sw.Start();
+            testCollections.DictionaryState.ContainsValue(searchThis);
+            sw.Stop();
+
+            return sw.ElapsedMilliseconds;
         }
     }
 }
