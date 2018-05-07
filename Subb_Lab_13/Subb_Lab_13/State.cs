@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Subb_Lab_13
 {
-    class State // State class
+    class State: IComparable // State class
     {
         // State name
         protected string name;
@@ -119,5 +119,33 @@ namespace Subb_Lab_13
             return " State's name: " + Name + " Leader's name: " + LeaderName + 
                 " State's population: " + Population + " State's age: " + Age + " Continent: " + Continent;
         }
+
+        // Redefinition of the Equals method.
+        public override bool Equals(object obj)
+        {
+            State buf = (State)obj;
+
+            bool equal = false;
+
+            if (Name == buf.Name && LeaderName == buf.LeaderName &&
+                Population == buf.Population && Age == buf.Age && Continent == buf.Continent)
+                equal = true;
+
+            return equal;
+        }
+
+        // Redefinition of the CompareTo method from the IComparable interface.
+        public int CompareTo(object s)
+        {
+            State newS = s as State;
+            int result = 1;
+
+            if (this.Equals(s))
+                result = 0;
+            
+
+            return result;
+        }
+
     }
 }
